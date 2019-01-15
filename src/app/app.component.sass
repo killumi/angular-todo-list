@@ -1,0 +1,50 @@
+header
+	background-color: #21d4c7
+	text-align: center
+	color: #fff
+	padding: 20px
+	box-shadow: 0px 3px 12px 0px rgba(207,207,207,1)
+	h1
+		margin: 0
+		font-family: 'Roboto'
+		font-weight: normal
+
+main
+	width: 100%
+
+.todo-list
+	display: flex
+	flex-direction: column
+	justify-content: flex-start
+	align-items: flex-start
+	width: 100%
+	box-shadow: 0px 3px 22px 0px rgba(207,207,207,1)
+	margin: auto
+	width: 40%
+	margin-top: 70px
+	background-color: #fff
+
+.todo-list-item
+	padding: 15px 25px
+	display: flex
+	justify-content: space-between
+	align-items: center
+	width: 100%
+	border: 1px solid #dedede
+	.icon
+		color: #68707b
+	&:nth-child(n + 2)
+		border-top: none
+	&__title
+		flex-grow: 1
+		font-family: 'Roboto'
+		font-weight: 500
+		font-size: 26px
+		margin-left: 20px
+
+	&.todo-completed
+		background-color: #85eae3
+		color: #fff
+		opacity: .4
+		.todo-list-item__title
+			text-decoration: line-through
