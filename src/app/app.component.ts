@@ -6,7 +6,7 @@ const todosData = [
     completed: true,
   },
   {
-    title: 'Изучить ES7',
+    title: 'Изучить ES7 2',
     completed: false,
   },
   {
