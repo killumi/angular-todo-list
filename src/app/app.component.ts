@@ -1,19 +1,6 @@
 import { Component } from '@angular/core';
-
-const todosData = [
-  {
-    title: 'Изучить JS',
-    completed: true,
-  },
-  {
-    title: 'Изучить ES7 2',
-    completed: false,
-  },
-  {
-    title: 'Изучить Angular 7',
-    completed: false,
-  },
-]
+import { Todo } from './shared/todo'
+import { todosData } from './shared/data';
 
 @Component({
   selector: 'app-root',
@@ -23,9 +10,4 @@ const todosData = [
 
 export class AppComponent {
   mainTitle = 'TODO List';
-  todos = todosData;
-
-  toggleCompletedTast( todo: any ) {
-    todo.completed = !todo.completed;
-  }
 }

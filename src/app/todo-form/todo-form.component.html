@@ -1,0 +1,7 @@
+<form class="todo-form" (ngSubmit)="onSubmit(); todoForm.reset()" #todoForm="ngForm">
+  <mat-form-field class="example-full-width todo-form__input-wrap">
+    <input matInput name="title" required [(ngModel)]="title" placeholder="Название задачи">
+  </mat-form-field>
+
+  <button [disabled]="todoForm.form.invalid" mat-raised-button class="todo-form__button" color="primary">Добавить</button>
+</form>
