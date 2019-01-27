@@ -9,14 +9,12 @@ import { TodoService } from '../shared/todo.service';
   styleUrls: ['./todo-list.component.sass']
 })
 export class TodoListComponent implements OnInit {
-  todos: Todo[];
+  public todos: any;
 
-  constructor(private todoService: TodoService) {
-    this.todos = [];
-   }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit() {
-    this.todos = this.todoService.getTodos();
+    this.todoService.getTodos().subscribe( todos => this.todos = todos);
   }
 
   delete(todo: Todo) {

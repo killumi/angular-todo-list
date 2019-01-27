@@ -4,6 +4,9 @@
 	justify-content: space-between
 	align-items: center
 	width: 100%
+	transition: .4s ease
+	&:hover
+		background-color: #85eae3
 	.icon
 		color: #68707b
 	&__title
@@ -14,8 +17,13 @@
 		margin-left: 20px
 
 	&.todo-completed
-		background-color: #85eae3
+		// background-color: #85eae3
+		background-color: #d0d0d0
 		color: #fff
-		opacity: .4
+		button
+			color: #ffffff
 		.todo-list-item__title
 			text-decoration: line-through
+			opacity: .4
+		.todo-list-item__actions--delete
+			color: red
