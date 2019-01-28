@@ -3,7 +3,7 @@
     <i class="material-icons">{{ todo.completed ? 'check_box' : 'check_box_outline_blank' }}</i>
   </button>
 
-  <span class="todo-list-item__title">{{todo.title}}</span>
+  <span class="todo-list-item__title">{{ todo.id }} / {{todo.title}}</span>
 
   <div class="todo-list-item__actions">
     <button mat-icon-button (click)="onDelete()" class="todo-list-item__actions--delete icon">

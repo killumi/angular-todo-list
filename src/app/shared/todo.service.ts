@@ -2,34 +2,22 @@ import { todosData } from './data';
 import { Todo } from './todo';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class TodoService {
-	todos: any;
-
+	private baseUrl: string = 'https://jsonplaceholder.typicode.com/todos';
 	constructor( private _http: HttpClient) { }
 
-	getTodos() {
-		return this.todos = this._http.get('https://jsonplaceholder.typicode.com/todos');
-		// return this.todos;
+	getTodos(): Observable<Todo[]> {
+		return this._http.get<Todo[]>(this.baseUrl);
 	}
 
-	createTodo( title: string ) {
-		let todo = new Todo(title);
-		// this.todos.push(todo);
-	}
+	createTodo( title: string ) { }
 
-	deleteTodo(todo) {
-		// let tastIndex = this.todos.indexOf(todo);	
-
-		console.log(todo);
-		let taskIndex = todo.id;
-		console.log(taskIndex);
-
-    if( taskIndex > -1){
-			console.log(this.todos);
-      // this.todos.splice(taskIndex, 1)/
-    }
+	deleteTodo(id: number) {	
+		console.log(id);
+		return  this._http.delete(this.baseUrl + '/posts/' + id);
 	}
 
 	toggleTodo( todo: Todo ) {

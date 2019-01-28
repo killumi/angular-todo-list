@@ -2,6 +2,7 @@ import { Component, OnInit, } from '@angular/core';
 
 import { Todo } from '../shared/todo';
 import { TodoService } from '../shared/todo.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-todo-list',
@@ -9,20 +10,33 @@ import { TodoService } from '../shared/todo.service';
   styleUrls: ['./todo-list.component.sass']
 })
 export class TodoListComponent implements OnInit {
-  public todos: any;
+  public page: number = 1;
+  public todos = [];
 
-  constructor(private todoService: TodoService) { }
+  constructor(private _todoService: TodoService) { }
 
   ngOnInit() {
-    this.todoService.getTodos().subscribe( todos => this.todos = todos);
+    this.getTodos();
   }
 
+  getTodos() {
+    this._todoService.getTodos()
+      .subscribe(data => this.todos = data);
+  }
+
+
   delete(todo: Todo) {
-    this.todoService.deleteTodo(todo);
+    this._todoService.deleteTodo(todo.id);
+
+    let taskIndex = this.todos.indexOf(todo);
+    if( taskIndex > -1 ){
+      this.todos.splice(taskIndex, 1);
+    }
+
   }
 
   toggle(todo: Todo) {
-    this.todoService.toggleTodo(todo);
+    this._todoService.toggleTodo(todo);
   }
 
 }
