@@ -2,4 +2,4 @@
     <app-todo-item *ngFor="let todo of todos | paginate: { itemsPerPage: 5, currentPage: page }" [todo]="todo" (delete)="delete($event)" (toggle)="toggle($event)"></app-todo-item>
 </div>
 
-<pagination-controls (pageChange)="page = $event"></pagination-controls>
+<pagination-controls  (pageChange)="page = $event"></pagination-controls>
