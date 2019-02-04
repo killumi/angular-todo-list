@@ -16,7 +16,11 @@ export class TodoFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.TodoService.createTodo(this.title);
+    console.log(this.title);
+    this.TodoService.createTodo(this.title).subscribe(
+      data => console.log('data:', data),
+      error => console.log('Error', error),
+    )
   }
 
 }

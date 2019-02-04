@@ -13,14 +13,15 @@ export class TodoService {
 		return this._http.get<Todo[]>(this.baseUrl);
 	}
 
-	createTodo( title: string ) { }
+	createTodo(title: string) { 
+		return this._http.post<any>(this.baseUrl + '/post/' + title, title);
+	}
 
 	deleteTodo(id: number) {	
-		console.log(id);
 		return  this._http.delete(this.baseUrl + '/posts/' + id);
 	}
 
-	toggleTodo( todo: Todo ) {
+	toggleTodo(todo: Todo) {
 		todo.completed = !todo.completed;
 	}
 }
