@@ -14,6 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NavigationComponent } from './navigation/navigation.component';
 
+const appRoutes: Routes = [
+  {path: '', component: TodoListComponent},
+]
 
 @NgModule({
   declarations: [
