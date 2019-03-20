@@ -1,5 +1,6 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Output} from '@angular/core';
 import { TodoService } from '../shared/todo.service';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-todo-form',
@@ -7,13 +8,13 @@ import { TodoService } from '../shared/todo.service';
   styleUrls: ['./todo-form.component.sass']
 })
 export class TodoFormComponent implements OnInit {
-
+  @Output() onSearch = new EventEmitter();
+  search: string = '';
   title: string = '';
 
   constructor(private TodoService: TodoService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onSubmit() {
     console.log(this.title);
@@ -21,6 +22,10 @@ export class TodoFormComponent implements OnInit {
       data => console.log('data:', data),
       error => console.log('Error', error),
     )
+  }
+
+  searchTodo() {
+    this.onSearch.emit(this.search);
   }
 
 }

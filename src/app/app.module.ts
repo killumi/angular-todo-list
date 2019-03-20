@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
@@ -13,10 +12,9 @@ import { TodoService } from './shared/todo.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NavigationComponent } from './navigation/navigation.component';
+import { PageTodosComponent } from './page-todos/page-todos.component';
+import { SearchPipe } from './pipe/search.pipe';
 
-const appRoutes: Routes = [
-  {path: '', component: TodoListComponent},
-]
 
 @NgModule({
   declarations: [
@@ -24,7 +22,9 @@ const appRoutes: Routes = [
     TodoFormComponent,
     TodoListComponent,
     TodoItemComponent,
-    NavigationComponent
+    NavigationComponent,
+    PageTodosComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

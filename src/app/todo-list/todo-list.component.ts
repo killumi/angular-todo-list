@@ -1,4 +1,4 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, OnInit, Input, } from '@angular/core';
 
 import { Todo } from '../shared/todo';
 import { TodoService } from '../shared/todo.service';
@@ -10,6 +10,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./todo-list.component.sass']
 })
 export class TodoListComponent implements OnInit {
+  @Input() searchTodoValue = '';
+  
   public page: number = 1;
   public todos = [];
 

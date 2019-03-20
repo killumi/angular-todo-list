@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-import { Todo } from './shared/todo'
-import { todosData } from './shared/data';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +6,13 @@ import { todosData } from './shared/data';
   styleUrls: ['./app.component.sass']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
+  searchValue = '';
   mainTitle = 'TODO List';
+
+  ngOnInit() {}
+  
+  onSearchTodo( value ) {
+    this.searchValue = value;
+  }
 }

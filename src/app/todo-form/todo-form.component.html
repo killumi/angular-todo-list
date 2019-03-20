@@ -1,5 +1,9 @@
 <form class="todo-form" (ngSubmit)="onSubmit(); todoForm.reset();" #todoForm="ngForm">
   <mat-form-field class="example-full-width todo-form__input-wrap">
+    <input matInput name="title" [(ngModel)]="search" (keyup)="searchTodo()" placeholder="Поиск">
+  </mat-form-field>
+
+  <mat-form-field style="margin-left: 20px;" class="example-full-width todo-form__input-wrap">
     <input #taskName matInput name="title" [(ngModel)]="title" placeholder="Название задачи">
   </mat-form-field>
 

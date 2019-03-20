@@ -5,7 +5,7 @@
 
 <main>
   <div class="todo-content">
-    <app-todo-form></app-todo-form>
-    <app-todo-list></app-todo-list>
+    <app-todo-form (onSearch)="onSearchTodo($event)"></app-todo-form>
+    <app-todo-list [searchTodoValue]="searchValue"></app-todo-list>
   </div>
 </main>
