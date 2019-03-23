@@ -1,2 +1,4 @@
-# angular-start-pack
-Angular template with bootstrap, material theme, and other features useful feature
+# Tod list
+
+`npm i`
+`ng serve`
