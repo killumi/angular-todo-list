@@ -1,4 +1,4 @@
-# Tod list
+# Todo list
 
 `npm i`
 `ng serve`
