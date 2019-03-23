@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,13 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 
-export class AppComponent implements OnInit {
-  searchValue = '';
-  mainTitle = 'TODO List';
-
-  ngOnInit() {}
-  
-  onSearchTodo( value ) {
-    this.searchValue = value;
-  }
+export class AppComponent {
+  mainTitle = 'My app 2';
 }

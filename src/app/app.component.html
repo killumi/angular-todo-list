@@ -1,11 +1,1 @@
-<app-navigation></app-navigation>
-<header>
-  <h1>{{ mainTitle }}</h1>
-</header>
-
-<main>
-  <div class="todo-content">
-    <app-todo-form (onSearch)="onSearchTodo($event)"></app-todo-form>
-    <app-todo-list [searchTodoValue]="searchValue"></app-todo-list>
-  </div>
-</main>
+<router-outlet></router-outlet>

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "todo-list": {
+    "crm": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/todo-list",
+            "outputPath": "dist/crm",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -27,8 +27,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
+              "src/styles.sass",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                 "./src",
+                 "./src/sass"
+              ]
+           },
             "scripts": []
           },
           "configurations": {
@@ -61,18 +68,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "todo-list:build"
+            "browserTarget": "crm:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "todo-list:build:production"
+              "browserTarget": "crm:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "todo-list:build"
+            "browserTarget": "crm:build"
           }
         },
         "test": {
@@ -106,7 +113,7 @@
         }
       }
     },
-    "todo-list-e2e": {
+    "crm-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -115,11 +122,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "todo-list:serve"
+            "devServerTarget": "crm:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "todo-list:serve:production"
+              "devServerTarget": "crm:serve:production"
             }
           }
         },
@@ -135,5 +142,5 @@
       }
     }
   },
-  "defaultProject": "todo-list"
+  "defaultProject": "crm"
 }
