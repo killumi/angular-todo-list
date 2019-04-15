@@ -1,13 +1,12 @@
 <div class="todo-list-item">
-  <button mat-icon-button class="checkbox icon">
-    <i class="material-icons">check_box</i>
-    <!-- 'check_box' : 'check_box_outline_blank' -->
+  <button mat-icon-button (click)="toggleTodo()" [ngClass]="{'active' : todo.completed }" class="checkbox icon">
+    <i class="material-icons">{{todo.completed ? 'check_box' : 'check_box_outline_blank' }}</i>
   </button>
 
   <span class="todo-list-item__title">{{todo.title}}</span>
 
   <div class="todo-list-item__actions">
-    <button mat-icon-button class="todo-list-item__actions--delete icon">
+    <button (click)="deleteTodo()" *ngIf="todo.completed" mat-icon-button class="todo-list-item__actions--delete icon">
       <i class="material-icons">delete</i>
     </button>
   </div>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
 import { PageTodoComponent } from './page-todo/page-todo.component';
@@ -13,6 +13,7 @@ import { TodoRouting } from './todo.routing';
   declarations: [TodoListComponent, TodoFormComponent, TodoItemComponent, PageTodoComponent],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     FormsModule,
     MatButtonModule,
     MatCheckboxModule,

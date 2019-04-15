@@ -8,6 +8,8 @@ import { AppRouting } from './app.routing';
 import { PageHomeComponent } from './static-pages/page-home/page-home.component';
 import { MatButtonModule } from '@angular/material';
 import { CoreModule } from './core/core.module';
+import { StoreModule } from '@ngrx/store';
+import { todoReducer } from './redux/todo.reducer';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { CoreModule } from './core/core.module';
     AppRouting,
     MatButtonModule,
     ReactiveFormsModule,
-    CoreModule
+    CoreModule,
+    StoreModule.forRoot({todoPage: todoReducer})
   ],
   providers: [],
   bootstrap: [AppComponent]

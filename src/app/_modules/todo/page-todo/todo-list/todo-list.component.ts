@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Todo } from 'src/app/_models/todo';
-import { TodoService } from 'src/app/_services/todo.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { Todo, Todos } from 'src/app/_models/todo';
+import { AppState } from 'src/app/redux/app.state';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-todo-list',
@@ -10,10 +12,11 @@ import { TodoService } from 'src/app/_services/todo.service';
 export class TodoListComponent implements OnInit {
   todos: Todo[];
 
-  constructor(private _todoService: TodoService) { }
+  public todoState: Observable<Todos>
+
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
-    this._todoService.getTodos().subscribe( todos => this.todos = todos);
+    this.todoState = this.store.select('todoPage');
   }
-
 }

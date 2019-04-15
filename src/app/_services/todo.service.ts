@@ -15,9 +15,18 @@ export class TodoService {
     return this._http.get<Todo[]>(this.baseUrl);
   }  
 
-  addTodo( todo:Todo ) {}
+  addTodo( todos: Todo[], todoTitle: string ) {
+    todos.unshift({
+      userId: 201,
+      id: 201,
+      title: todoTitle,
+      completed: false
+    })
+  }
 
-  deleteTodo( todo: Todo ) {}
+  deleteTodo( todos: Todo[], todo: Todo ) {
+    todos.splice(todos.indexOf(todo), 1);
+  }
 
   toggleTodo( todo: Todo ) {
     todo.completed = !todo.completed;

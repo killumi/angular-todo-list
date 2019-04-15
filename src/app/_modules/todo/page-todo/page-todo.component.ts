@@ -6,10 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-todo.component.sass']
 })
 export class PageTodoComponent implements OnInit {
+  todoTitle: string;
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
