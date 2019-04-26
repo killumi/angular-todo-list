@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { TodoService } from 'src/app/_services/todo.service';
-import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/redux/app.state';
-import { AddTodo } from 'src/app/redux/todo.action';
 
 @Component({
   selector: 'app-todo-form',
@@ -19,18 +16,24 @@ export class TodoFormComponent {
   constructor(
     private _fb: FormBuilder,
     private _todoService: TodoService,
-    private store: Store<AppState>
     ) { }
 
   addTodo() {
+    if(!this.todoForm.value.todoTitle) {
+      console.error('Paste todo title');
+      return;
+    }
+
     const todo = {
-      "userId": 1,
-      "id": 19,
       "title": this.todoForm.value.todoTitle,
       "completed": false
     }
 
-    this.store.dispatch(new AddTodo(todo));
+    this._todoService.addTodo(todo);
+  }
+
+  loadTodos() {
+    this._todoService.loadTodo();
   }
   
 }

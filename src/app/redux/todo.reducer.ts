@@ -1,27 +1,7 @@
-import { Action } from '@ngrx/store';
-import { TODO_ACTION, AddTodo, TodoActions } from './todo.action';
+import { TODO_ACTION, TodoActions } from './todo.action';
 
 const initialState = {
-	todos: [
-		{
-			"userId": 1,
-			"id": 1,
-			"title": "delectus aut autem",
-			"completed": true
-		},
-		{
-			"userId": 1,
-			"id": 2,
-			"title": "quis ut nam facilis et officia qui",
-			"completed": false
-		},
-		{
-			"userId": 1,
-			"id": 3,
-			"title": "fugiat veniam minus",
-			"completed": false
-		},
-	]
+	todos: []
 }
 
 export function todoReducer(state = initialState, action: TodoActions) {
@@ -42,6 +22,11 @@ export function todoReducer(state = initialState, action: TodoActions) {
 			return {
 				...state,
 				todos: [...state.todos]
+			}
+		case TODO_ACTION.LOAD_TODOS:
+			return {
+				...state,
+				todos: [...action.payload]
 			}
 		default:
 			return state

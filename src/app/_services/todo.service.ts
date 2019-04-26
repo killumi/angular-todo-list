@@ -1,34 +1,48 @@
 import { Injectable } from '@angular/core';
 import { Todo } from '../_models/todo';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { AppState } from '../redux/app.state';
+import { LoadTodos, AddTodo, DeleteTodo, UpdateTodo } from '../redux/todo.action';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class TodoService {
-  private baseUrl = "https://jsonplaceholder.typicode.com/todos";
-  
-  constructor(private _http: HttpClient) { }
 
-  getTodos():Observable<Todo[]> {
-    return this._http.get<Todo[]>(this.baseUrl);
-  }  
+  static BASE_URL: string = "http://localhost:3000/";
 
-  addTodo( todos: Todo[], todoTitle: string ) {
-    todos.unshift({
-      userId: 201,
-      id: 201,
-      title: todoTitle,
-      completed: false
-    })
+  constructor (
+    private _http: HttpClient,
+    private store: Store<AppState>
+  ) { }
+
+  loadTodo(): void {
+    this._http.get(TodoService.BASE_URL + 'todos')
+      .subscribe(
+        (todos: Todo[]) => this.store.dispatch(new LoadTodos(todos))
+      )
   }
 
-  deleteTodo( todos: Todo[], todo: Todo ) {
-    todos.splice(todos.indexOf(todo), 1);
+  addTodo(todo: Todo) {
+    this._http.post(TodoService.BASE_URL + 'todos', todo)
+      .subscribe(
+        (todo: Todo) => this.store.dispatch(new AddTodo(todo))
+      )
   }
 
-  toggleTodo( todo: Todo ) {
-    todo.completed = !todo.completed;
+  deleteTodo(todo: Todo) {
+    this._http.delete(TodoService.BASE_URL + 'todos/' + todo.id)
+      .subscribe(
+        (todo: Todo) => this.store.dispatch(new DeleteTodo(todo))
+      )
+  }
+
+  updateTodo(todo: Todo) {
+    this._http.put(TodoService.BASE_URL + 'todos/' + todo.id, todo)
+      .subscribe(
+        (todo: Todo) => this.store.dispatch(new UpdateTodo(todo))
+      )
   }
 }
