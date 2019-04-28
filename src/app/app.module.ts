@@ -10,6 +10,8 @@ import { MatButtonModule } from '@angular/material';
 import { CoreModule } from './core/core.module';
 import { StoreModule } from '@ngrx/store';
 import { todoReducer } from './redux/todo.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { TodoEffect } from './redux/todo.effect';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { todoReducer } from './redux/todo.reducer';
     MatButtonModule,
     ReactiveFormsModule,
     CoreModule,
+    EffectsModule.forRoot([TodoEffect]),
     StoreModule.forRoot({todoPage: todoReducer})
   ],
   providers: [],

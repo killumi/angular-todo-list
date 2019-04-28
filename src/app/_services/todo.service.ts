@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { AppState } from '../redux/app.state';
 import { LoadTodos, AddTodo, DeleteTodo, UpdateTodo } from '../redux/todo.action';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +20,12 @@ export class TodoService {
     private store: Store<AppState>
   ) { }
 
+  preloadTodo() {
+    return this._http.get(TodoService.BASE_URL + 'todos').pipe(map(item => item))
+  }
+
   loadTodo(): void {
-    this._http.get(TodoService.BASE_URL + 'todos')
+    this.preloadTodo()
       .subscribe(
         (todos: Todo[]) => this.store.dispatch(new LoadTodos(todos))
       )

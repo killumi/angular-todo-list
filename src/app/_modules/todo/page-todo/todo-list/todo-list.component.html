@@ -1,6 +1,6 @@
 <div class="todo-list">
   <app-todo-item 
-    *ngFor="let todo of (todoState | async).todos" 
+    *ngFor="let todo of (todoState | async).todos; trackBy:trackByFn"
     (toggle)="onToggle($event)" 
     (delete)="onDelete($event)"
     [todo]="todo"></app-todo-item>
