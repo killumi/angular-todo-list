@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { AppState } from '../redux/app.state';
 import { LoadTodos, AddTodo, DeleteTodo, UpdateTodo } from '../redux/todo.action';
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({

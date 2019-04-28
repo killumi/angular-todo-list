@@ -4,7 +4,6 @@ import { AppState } from 'src/app/redux/app.state';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { TodoService } from 'src/app/_services/todo.service';
-import { UpdateTodo } from 'src/app/redux/todo.action';
 
 @Component({
   selector: 'app-todo-list',
