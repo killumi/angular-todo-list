@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { TodoService } from 'src/app/_services/todo.service';
+
 
 @Component({
   selector: 'app-todo-form',
@@ -8,11 +9,14 @@ import { TodoService } from 'src/app/_services/todo.service';
   styleUrls: ['./todo-form.component.sass']
 })
 export class TodoFormComponent {
+  @Output() searchValue = new EventEmitter();
+  
   todoForm = this._fb.group({
     search: [''],
-    todoTitle: ['', Validators.required]
+    todoTitle: [null, Validators.required]
   });
   
+
   constructor(
     private _fb: FormBuilder,
     private _todoService: TodoService,
@@ -36,4 +40,7 @@ export class TodoFormComponent {
     this._todoService.loadTodo();
   }
   
+  sendSearchValue() {
+    this.searchValue.emit(this.todoForm.value.search);
+  }
 }

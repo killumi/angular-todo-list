@@ -1,4 +1,4 @@
 <div class="page-todo">
-  <app-todo-form></app-todo-form>
-  <app-todo-list [title]="todoTitle"></app-todo-list>
+  <app-todo-form (searchValue)="setSearchTodoValue($event)"></app-todo-form>
+  <app-todo-list [searchTodoValue]="searchTodoValue" [title]="todoTitle"></app-todo-list>
 </div>

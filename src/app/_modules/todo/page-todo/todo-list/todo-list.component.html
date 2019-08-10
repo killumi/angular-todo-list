@@ -1,7 +1,13 @@
 <div class="todo-list">
   <app-todo-item 
-    *ngFor="let todo of (todoState | async).todos; trackBy:trackByFn"
+    *ngFor="let todo of (todoState | async).todos | search: searchTodoValue; trackBy:trackByFn"
     (toggle)="onToggle($event)" 
     (delete)="onDelete($event)"
+    (update)="onEdit($event)"
     [todo]="todo"></app-todo-item>
+
+    <div *ngIf="!(todoState | async).todos.length" class="todo-list__empty">
+      <i class="material-icons">feedback</i>
+      <h2 class="todo-list__empty-title">Пока что нет задач</h2>
+    </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Todo, Todos } from 'src/app/_models/todo';
 import { AppState } from 'src/app/redux/app.state';
 import { Store } from '@ngrx/store';
@@ -11,6 +11,8 @@ import { TodoService } from 'src/app/_services/todo.service';
   styleUrls: ['./todo-list.component.sass']
 })
 export class TodoListComponent implements OnInit {
+  @Input() searchTodoValue: string;
+  
   public todoState: Observable<Todos>
 
   constructor(
@@ -29,6 +31,10 @@ export class TodoListComponent implements OnInit {
 
   onToggle(todo: Todo) {
     todo.completed = !todo.completed;
+    this._todoServive.updateTodo(todo);
+  }
+
+  onEdit(todo: Todo) {
     this._todoServive.updateTodo(todo);
   }
 

@@ -1,6 +1,6 @@
 <form [formGroup]="todoForm" (ngSubmit)="addTodo()" class="todo-form">
   <mat-form-field class="example-full-width todo-form__input-wrap">
-    <input formControlName="search" matInput name="title" placeholder="Поиск">
+    <input formControlName="search" (keyup)="sendSearchValue()" matInput name="title" placeholder="Поиск">
   </mat-form-field>
 
   <mat-form-field style="margin-left: 20px;" class="example-full-width todo-form__input-wrap">

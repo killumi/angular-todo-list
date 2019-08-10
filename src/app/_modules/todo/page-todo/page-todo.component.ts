@@ -7,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageTodoComponent implements OnInit {
   todoTitle: string;
+  searchTodoValue: string;
 
   constructor() { }
 
   ngOnInit() {}
+
+  setSearchTodoValue(value) {
+    this.searchTodoValue = value;
+  }
 }

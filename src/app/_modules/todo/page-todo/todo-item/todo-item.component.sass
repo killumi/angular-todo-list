@@ -1,3 +1,5 @@
+@import "./_colors.sass"
+	
 .todo-list-item
 	padding: 15px 23px
 	display: flex
@@ -5,27 +7,46 @@
 	align-items: center
 	width: 100%
 	transition: .4s ease
-	&:hover
-		background-color: #85eae3
+	background-color: $white
 	.icon
-		color: #68707b
-		&.active
-			color: #673ab7
+		color: $gray
+	&:hover
+		background-color: $hoverTodo
+
+	&.completed
+		.checkbox
+			color: $main
+		.todo-list-item__title
+			text-decoration: line-through
+			opacity: .4
+		.todo-list-item__actions--delete
+			color: red
+			
+	&.edit
+		background-color: $hoverTodo
+		.todo-list-item__actions--edit
+			color: $main
+		.todo-list-item__title
+			background-color: $white
+			opacity: 1
+
 	&__title
 		flex-grow: 1
 		font-family: 'Roboto'
 		font-weight: 500
 		font-size: 26px
 		margin-left: 20px
-
-	&.todo-completed
-		// background-color: #85eae3
-		background-color: #d0d0d0
-		color: #fff
+		&:disabled
+			background-color: transparent
+			
+	&__actions
+		display: flex
+		align-items: center
+		justify-content: flex-end
 		button
-			color: #ffffff
-		.todo-list-item__title
-			text-decoration: line-through
-			opacity: .4
-		.todo-list-item__actions--delete
-			color: red
+			display: flex
+			align-items: center
+			justify-content: center
+			transition: .4s ease
+			&:hover
+				color: $main
